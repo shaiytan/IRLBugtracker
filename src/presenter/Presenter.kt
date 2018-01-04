@@ -1,13 +1,12 @@
 package presenter
 
-import models.TheBug
+import models.*
 
 interface Presenter {
-    fun onAdd(index: Int)
+    fun onAdd(type: BugType)
     fun addBug(bug: TheBug)
-    fun onEdit(index: Int)
+    fun onEdit(index: Int, type: BugType)
     fun editBug(bug: TheBug)
-    fun onDelete(index: Int)
-    fun onSwitchList(index: Int)
-    fun onBugSelected(index: Int)
+    fun onDelete(index: Int, type: BugType)
+    fun onBugSelected(index: Int, type: BugType)
 }

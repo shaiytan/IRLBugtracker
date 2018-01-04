@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<DialogPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1">
+    <ButtonType fx:constant="OK"/>
+    <ButtonType fx:constant="CANCEL"/>
+    <content>
+        <GridPane>
+            <columnConstraints>
+                <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="ALWAYS"/>
+                <RowConstraints vgrow="ALWAYS"/>
+                <RowConstraints vgrow="ALWAYS"/>
+                <RowConstraints vgrow="ALWAYS"/>
+                <RowConstraints vgrow="ALWAYS"/>
+            </rowConstraints>
+            <Label alignment="CENTER_RIGHT" text="Name: " GridPane.halignment="RIGHT"/>
+            <Label text="Date: " GridPane.halignment="RIGHT" GridPane.rowIndex="1"/>
+            <Label text="Category: " GridPane.halignment="RIGHT" GridPane.rowIndex="2"/>
+            <Label text="Type: " GridPane.halignment="RIGHT" GridPane.rowIndex="3"/>
+            <Label text="Description: " GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP"/>
+            <TextField fx:id="tfName" GridPane.columnIndex="1"/>
+            <DatePicker fx:id="dpDate" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <ChoiceBox fx:id="cbCategory" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            <ChoiceBox fx:id="cbType" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <TextArea fx:id="tfDescription" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
+                      GridPane.rowIndex="4"/>
+        </GridPane>
+    </content>
+</DialogPane>
