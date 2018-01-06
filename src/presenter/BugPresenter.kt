@@ -70,6 +70,11 @@ class BugPresenter(
 
     override fun onBugSelected(index: Int, type: BugType) {
         val currentData = chooselist(type)
-        view.setBugData(currentData[index])
+        if (index in currentData.indices)
+            when (type) {
+                BugType.BUG -> view.setBugData(currentData[index])
+                BugType.IMPROVEMENT -> view.setImprovementData(currentData[index])
+                BugType.IDEA -> view.setIdeaData(currentData[index])
+            }
     }
 }

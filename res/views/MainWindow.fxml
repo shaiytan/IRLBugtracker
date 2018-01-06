@@ -46,7 +46,8 @@
                         </TextArea>
                     </center>
                     <bottom>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="471.0" spacing="15.0"
+                        <HBox fx:id="boxBugs" disable="true" alignment="CENTER_RIGHT" prefHeight="50.0"
+                              prefWidth="471.0" spacing="15.0"
                               BorderPane.alignment="CENTER_RIGHT">
                             <padding>
                                 <Insets right="10.0"/>
@@ -87,7 +88,8 @@
                             GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.rowSpan="2"
                             GridPane.vgrow="ALWAYS">
                     <bottom>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="471.0" spacing="15.0"
+                        <HBox fx:id="boxImprovements" disable="true" alignment="CENTER_RIGHT" prefHeight="50.0"
+                              prefWidth="471.0" spacing="15.0"
                               BorderPane.alignment="CENTER_RIGHT">
                             <padding>
                                 <Insets right="10.0"/>
@@ -140,7 +142,8 @@
                             GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.rowSpan="2"
                             GridPane.vgrow="ALWAYS">
                     <bottom>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="471.0" spacing="15.0"
+                        <HBox fx:id="boxIdeas" disable="true" alignment="CENTER_RIGHT" prefHeight="50.0"
+                              prefWidth="471.0" spacing="15.0"
                               BorderPane.alignment="CENTER_RIGHT">
                             <padding>
                                 <Insets right="10.0"/>

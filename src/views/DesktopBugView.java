@@ -1,11 +1,14 @@
 package views;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import models.*;
 import org.jetbrains.annotations.NotNull;
@@ -15,7 +18,12 @@ import java.io.IOException;
 import java.util.*;
 
 public class DesktopBugView extends Application implements View {
-    private Stage stage;
+    @FXML
+    private HBox boxBugs;
+    @FXML
+    private HBox boxImprovements;
+    @FXML
+    private HBox boxIdeas;
     @FXML
     private Label lblBug;
     @FXML
@@ -34,11 +42,27 @@ public class DesktopBugView extends Application implements View {
     private ListView<String> listImprovements;
     @FXML
     private ListView<String> listIdeas;
+
     private Presenter presenter;
 
     @FXML
     private void initialize() {
         presenter = new BugPresenter(new DesktopBugModel(), this);
+        listBugs.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        listBugs.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+            presenter.onBugSelected(newValue.intValue(), BugType.BUG);
+            boxBugs.setDisable(newValue.equals(-1));
+        });
+        listImprovements.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        listImprovements.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+            presenter.onBugSelected(newValue.intValue(), BugType.IMPROVEMENT);
+            boxImprovements.setDisable(newValue.equals(-1));
+        });
+        listIdeas.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        listIdeas.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+            presenter.onBugSelected(newValue.intValue(), BugType.IDEA);
+            boxIdeas.setDisable(newValue.equals(-1));
+        });
     }
 
     @Override
@@ -102,7 +126,7 @@ public class DesktopBugView extends Application implements View {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/views/MainWindow.fxml"));
-        stage = primaryStage;
+        Stage stage = primaryStage;
         stage.setTitle("IRLBugtracker");
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
