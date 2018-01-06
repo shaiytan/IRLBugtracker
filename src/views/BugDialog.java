@@ -4,15 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
-import models.BugType;
-import models.Category;
-import models.TheBug;
+import models.*;
 
 import java.io.IOException;
 import java.time.*;
-import java.time.temporal.ChronoField;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
 import java.util.Date;
 
 public class BugDialog extends Dialog<TheBug> {

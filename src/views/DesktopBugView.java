@@ -45,23 +45,34 @@ public class DesktopBugView extends Application implements View {
 
     private Presenter presenter;
 
+    private void setDefaultView(String headerData, Label header, String areaData, TextArea area) {
+        header.setText(headerData);
+        area.setText(areaData);
+    }
     @FXML
     private void initialize() {
         presenter = new BugPresenter(new DesktopBugModel(), this);
         listBugs.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         listBugs.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-            presenter.onBugSelected(newValue.intValue(), BugType.BUG);
-            boxBugs.setDisable(newValue.equals(-1));
+            boolean noneSelected = newValue.equals(-1);
+            boxBugs.setDisable(noneSelected);
+            if (noneSelected) setDefaultView("Bug", lblBug, "Описание бага", tfBug);
+            else presenter.onBugSelected(newValue.intValue(), BugType.BUG);
         });
         listImprovements.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         listImprovements.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-            presenter.onBugSelected(newValue.intValue(), BugType.IMPROVEMENT);
-            boxImprovements.setDisable(newValue.equals(-1));
+            boolean noneSelected = newValue.equals(-1);
+            boxImprovements.setDisable(noneSelected);
+            if (noneSelected)
+                setDefaultView("Improvement", lblImprovement, "Описание улучшения", tfImprovement);
+            else presenter.onBugSelected(newValue.intValue(), BugType.IMPROVEMENT);
         });
         listIdeas.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         listIdeas.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-            presenter.onBugSelected(newValue.intValue(), BugType.IDEA);
-            boxIdeas.setDisable(newValue.equals(-1));
+            boolean noneSelected = newValue.equals(-1);
+            boxIdeas.setDisable(noneSelected);
+            if (noneSelected) setDefaultView("Idea", lblIdea, "Описание идеи", tfIdea);
+            else presenter.onBugSelected(newValue.intValue(), BugType.IDEA);
         });
     }
 
@@ -126,25 +137,73 @@ public class DesktopBugView extends Application implements View {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/views/MainWindow.fxml"));
-        Stage stage = primaryStage;
-        stage.setTitle("IRLBugtracker");
-        stage.setScene(new Scene(root, 600, 400));
-        stage.show();
+        primaryStage.setTitle("IRLBugtracker");
+        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.show();
+    }
+
+    @FXML
+    private void onBugAdd() {
+        presenter.onAdd(BugType.BUG);
+    }
+
+    @FXML
+    private void onImprovementAdd() {
+        presenter.onAdd(BugType.IMPROVEMENT);
+    }
+
+    @FXML
+    private void onIdeaAdd() {
+        presenter.onAdd(BugType.IDEA);
+    }
+
+    @FXML
+    private void onBugFix() {
+        presenter.onFix(listBugs.getSelectionModel().getSelectedIndex(), BugType.BUG);
+    }
+
+    @FXML
+    private void onImprovementFix() {
+        presenter.onFix(listImprovements.getSelectionModel().getSelectedIndex(), BugType.IMPROVEMENT);
+    }
+
+    @FXML
+    private void onIdeaFix() {
+        presenter.onFix(listIdeas.getSelectionModel().getSelectedIndex(), BugType.IDEA);
+    }
+
+    @FXML
+    private void onBugDelete() {
+        presenter.onDelete(listBugs.getSelectionModel().getSelectedIndex(), BugType.BUG);
+    }
+
+    @FXML
+    private void onImprovementDelete() {
+        presenter.onDelete(listImprovements.getSelectionModel().getSelectedIndex(), BugType.IMPROVEMENT);
+    }
+
+    @FXML
+    private void onIdeaDelete() {
+        presenter.onDelete(listIdeas.getSelectionModel().getSelectedIndex(), BugType.IDEA);
+    }
+
+    @FXML
+    private void onBugEdit() {
+        presenter.onEdit(listBugs.getSelectionModel().getSelectedIndex(), BugType.BUG);
+    }
+
+    @FXML
+    private void onImprovementEdit() {
+        presenter.onEdit(listImprovements.getSelectionModel().getSelectedIndex(), BugType.IMPROVEMENT);
+    }
+
+    @FXML
+    private void onIdeaEdit() {
+        presenter.onEdit(listIdeas.getSelectionModel().getSelectedIndex(), BugType.IDEA);
     }
 
     public static void main(String[] args) {
         launch(args);
     }
 
-    public void onBugAdd(ActionEvent event) {
-        presenter.onAdd(BugType.BUG);
-    }
-
-    public void onImprovementAdd(ActionEvent event) {
-        presenter.onAdd(BugType.IMPROVEMENT);
-    }
-
-    public void onIdeaAdd(ActionEvent event) {
-        presenter.onAdd(BugType.IDEA);
-    }
 }

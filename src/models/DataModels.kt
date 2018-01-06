@@ -8,8 +8,7 @@ enum class Category(val rating: Int) {
     ANNOYING(3),
     IRRITATING(2),
     PERSPECTIVE(1),
-    FIXED(0),
-    CANCELED(-1);
+    FIXED(0);
 }
 
 enum class BugType {

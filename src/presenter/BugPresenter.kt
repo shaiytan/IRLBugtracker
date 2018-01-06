@@ -48,7 +48,7 @@ class BugPresenter(
 
     override fun onEdit(index: Int, type: BugType) {
         val currentData = chooselist(type)
-        view.showBugForm(currentData[index])
+        if (index in currentData.indices) view.showBugForm(currentData[index])
     }
 
     override fun editBug(bug: TheBug) {
@@ -68,6 +68,15 @@ class BugPresenter(
         setLists()
     }
 
+    override fun onFix(index: Int, type: BugType) {
+        val currentData = chooselist(type)
+        if (index in currentData.indices) {
+            val bug = currentData[index]
+            bug.category = Category.FIXED
+            model.updateBug(bug)
+            setLists()
+        }
+    }
     override fun onBugSelected(index: Int, type: BugType) {
         val currentData = chooselist(type)
         if (index in currentData.indices)

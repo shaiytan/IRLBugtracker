@@ -32,7 +32,8 @@
                         </Label>
                     </top>
                     <center>
-                        <TextArea fx:id="tfBug" prefHeight="200.0" prefWidth="200.0" text="Описание бага"
+                        <TextArea editable="false" fx:id="tfBug" prefHeight="200.0" prefWidth="200.0"
+                                  text="Описание бага"
                                   BorderPane.alignment="CENTER">
                             <font>
                                 <Font size="14.0"/>
@@ -52,9 +53,9 @@
                             <padding>
                                 <Insets right="10.0"/>
                             </padding>
-                            <Button mnemonicParsing="false" text="Fix"/>
-                            <Button mnemonicParsing="false" text="Edit"/>
-                            <Button mnemonicParsing="false" text="Delete"/>
+                            <Button onAction="#onBugFix" mnemonicParsing="false" text="Fix"/>
+                            <Button onAction="#onBugEdit" mnemonicParsing="false" text="Edit"/>
+                            <Button onAction="#onBugDelete" mnemonicParsing="false" text="Delete"/>
                         </HBox>
                     </bottom>
                 </BorderPane>
@@ -94,13 +95,13 @@
                             <padding>
                                 <Insets right="10.0"/>
                             </padding>
-                            <Button mnemonicParsing="false" text="Fix"/>
-                            <Button mnemonicParsing="false" text="Edit"/>
-                            <Button mnemonicParsing="false" text="Delete"/>
+                            <Button onAction="#onImprovementFix" mnemonicParsing="false" text="Fix"/>
+                            <Button onAction="#onImprovementEdit" mnemonicParsing="false" text="Edit"/>
+                            <Button onAction="#onImprovementDelete" mnemonicParsing="false" text="Delete"/>
                         </HBox>
                     </bottom>
                     <center>
-                        <TextArea fx:id="tfImprovement" prefHeight="200.0" prefWidth="200.0"
+                        <TextArea editable="false" fx:id="tfImprovement" prefHeight="200.0" prefWidth="200.0"
                                   text="Описание улучшения" BorderPane.alignment="CENTER">
                             <font>
                                 <Font size="14.0"/>
@@ -148,13 +149,14 @@
                             <padding>
                                 <Insets right="10.0"/>
                             </padding>
-                            <Button mnemonicParsing="false" text="Fix"/>
-                            <Button mnemonicParsing="false" text="Edit"/>
-                            <Button mnemonicParsing="false" text="Delete"/>
+                            <Button onAction="#onIdeaFix" mnemonicParsing="false" text="Fix"/>
+                            <Button onAction="#onIdeaEdit" mnemonicParsing="false" text="Edit"/>
+                            <Button onAction="#onIdeaDelete" mnemonicParsing="false" text="Delete"/>
                         </HBox>
                     </bottom>
                     <center>
-                        <TextArea fx:id="tfIdea" prefHeight="200.0" prefWidth="200.0" text="Описание идеи"
+                        <TextArea editable="false" fx:id="tfIdea" prefHeight="200.0" prefWidth="200.0"
+                                  text="Описание идеи"
                                   BorderPane.alignment="CENTER">
                             <font>
                                 <Font size="14.0"/>
