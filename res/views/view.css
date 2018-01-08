@@ -1,0 +1,70 @@
+.dialog-pane,
+.tab-pane {
+    -fx-base: #9bf49b;
+    -fx-default-button: #00e100;
+    -fx-focus-color: #00ff00;
+}
+
+.tab-pane .tab-header-area {
+    -fx-padding: 0;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #58ed58;
+}
+
+.tab-pane .headers-region {
+    -fx-padding: 0 0 0 50;
+    -fx-effect: dropshadow(gaussian, black, 20, 0, -5, 0);
+}
+
+BorderPane {
+    -fx-background-color: #023f3f;
+}
+
+.titled-pane:expanded {
+    -fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0);
+}
+
+.titled-pane:expanded .title {
+    -fx-effect: dropshadow(gaussian, black, 10, 0, -2, 0);
+}
+
+.addbtn {
+    -fx-background-radius: 15;
+    -fx-base: #1bd5d5;
+    -fx-effect: dropshadow(gaussian, black, 15, 0, 0, 5);
+}
+
+.fixbtn {
+    -fx-background-radius: 15;
+    -fx-base: #1ed61e;
+    -fx-effect: dropshadow(gaussian, black, 15, 0, 0, 5);
+    -fx-text-fill: white;
+}
+
+.deletebtn {
+    -fx-background-radius: 15;
+    -fx-base: #ff2424;
+    -fx-effect: dropshadow(gaussian, black, 15, 0, 0, 5);
+    -fx-text-fill: white;
+}
+
+.editbtn {
+    -fx-background-radius: 15;
+    -fx-base: #ff8724;
+    -fx-effect: dropshadow(gaussian, black, 15, 0, 0, 5);
+    -fx-text-fill: white;
+}
+
+.tfcontent {
+    -fx-effect: dropshadow(gaussian, black, 15, 0, 5, 3);
+}
+
+.headerlbl {
+    -fx-text-fill: #a4f5f5;
+}
+
+.list-cell:selected {
+    -fx-background-color: #18adad;
+}

@@ -138,7 +138,7 @@ public class DesktopBugView extends Application implements View {
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/views/MainWindow.fxml"));
         primaryStage.setTitle("IRLBugtracker");
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setScene(new Scene(root, 800, 500));
         primaryStage.show();
     }
 

@@ -31,6 +31,8 @@ public class BugDialog extends Dialog<TheBug> {
             loader.setController(this);
             DialogPane dialog = loader.load();
             setDialogPane(dialog);
+            setWidth(300);
+            setHeight(200);
 
         } catch (IOException e) {
             e.printStackTrace();
