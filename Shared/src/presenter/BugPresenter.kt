@@ -24,7 +24,7 @@ class BugPresenter(
 
     private fun setLists() {
         val comp = Comparator<TheBug> { first, second ->
-            val res = first.category.rating.compareTo(second.category.rating)
+            val res = -first.category.rating.compareTo(second.category.rating)
             if (res == 0) first.date.compareTo(second.date) else res
         }
         bugsList.sortWith(comp)
@@ -77,6 +77,7 @@ class BugPresenter(
             setLists()
         }
     }
+
     override fun onBugSelected(index: Int, type: BugType) {
         val currentData = chooselist(type)
         if (index in currentData.indices)
