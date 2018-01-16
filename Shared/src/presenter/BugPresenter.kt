@@ -2,6 +2,7 @@ package presenter
 
 import models.*
 import views.View
+import java.util.function.Predicate
 import kotlin.Comparator
 
 class BugPresenter(
@@ -55,7 +56,11 @@ class BugPresenter(
         model.updateBug(bug)
         BugType.values()
                 .map { chooselist(it) }
-                .forEach { currentData -> currentData.removeIf { it.id == bug.id } }
+                .forEach { currentData ->
+                    currentData
+                            .filter { it.id == bug.id }
+                            .forEach { currentData.remove(it) }
+                }
         val currentData = chooselist(bug.type)
         currentData.add(bug)
         setLists()
